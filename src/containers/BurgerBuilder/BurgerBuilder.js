@@ -1,23 +1,44 @@
 import React, { Component} from 'react';
 import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
-import BurgerControls from '../../components/Burger/BuildControls/BuildControls';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+
+const INGREDIENT_PRICES= {
+    salad: 40,
+    cheese:50,
+    meat:100,
+    bacon:60
+};
 class BurgerBuilder extends Component{
 
     state={
         ingredients:{
-            salad: 1,
-            bacon: 2,
-            cheese: 3,
-            meat:4
-        }
+            salad: 0,
+            bacon: 0,
+            cheese:0,
+            meat:0
+        },
+        totalprice: 4
+    }
+
+    addIngredients = (type) => {
+        const old = this.state.ingredients[type];
+        const newupdated = old+1;
+        const updated = {
+            ...this.state.ingredients
+        };
+        updated[type] = newupdated;
+        const priceAddition= INGREDIENT_PRICES[type];
+        const oldprice = this.state.totalprice;
+        const newprice = oldprice+priceAddition;
+        this.setState({totalprice:newprice,ingredients:updated});
     }
     render(){
         return (
     <Aux>
     <Burger ingredients={this.state.ingredients}/>
-    <BuildControls/>
+    <BuildControls 
+    ingredientAdded= {this.addIngredients} />
     </Aux>
 
         );
