@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const instance = axis.create({
+const instance = axios.create({
     baseURL: "https://burgerbuilder-b802c.firebaseio.com/"
 });
 
