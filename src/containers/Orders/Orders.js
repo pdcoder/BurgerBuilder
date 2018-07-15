@@ -1,37 +1,50 @@
-import React from 'react';
-
+import React,{Component} from 'react';
+import * as actions from '../../store/actions/index';
+import { connect } from 'react-redux';
+import axios from '../../axios-orders';
+import witherrorHandler from '../../hoc/witherrorHandler/withErrorHandler';
 import classes from './Orders.css';
+import Spinner from '../../components/UI/Spinner/spinner';
+import Order from '../../components/Order/Order';
 
-const order = ( props ) => {
-    const ingredients = [];
 
-    for ( let ingredientName in props.ingredients ) {
-        ingredients.push(
-            {
-                name: ingredientName,
-                amount: props.ingredients[ingredientName]
-            }
-        );
+
+class Orders extends Component {
+    componentDidMount () {
+        this.props.onFetchOrders(this.props.token, this.props.userId);
     }
 
-    const ingredientOutput = ingredients.map(ig => {
-        return <span 
-            style={{
-                textTransform: 'capitalize',
-                display: 'inline-block',
-                margin: '0 8px',
-                border: '1px solid #ccc',
-                padding: '5px'
-                }}
-            key={ig.name}>{ig.name} ({ig.amount})</span>;
-    });
+    render () {
+        let orders = <Spinner />;
+        if ( !this.props.loading ) {
+            orders = this.props.orders.map( order => (
+                <Order
+                    key={order.id}
+                    ingredients={order.ingredients}
+                    price={order.price} />
+            ) )
+        }
+        return (
+            <div>
+                {orders}
+            </div>
+        );
+    }
+}
 
-    return (
-        <div className={classes.Order}>
-            <p>Ingredients: {ingredientOutput}</p>
-            <p>Price: <strong>USD {Number.parseFloat( props.price ).toFixed( 2 )}</strong></p>
-        </div>
-    );
+const mapStateToProps = state => {
+    return {
+        orders: state.order.orders,
+        loading: state.order.loading,
+        token: state.auth.token,
+        userId: state.auth.userId
+    };
 };
 
-export default order;
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchOrders: (token, userId) => dispatch( actions.fetchOrders(token, userId) )
+    };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( witherrorHandler( Orders, axios ) );
