@@ -1,24 +1,32 @@
-import React from 'react';
-import Burger from '../Burger/Burger';
-import Button from '../UI/Button/Button';
-import classes from './CheckoutSummary.css';
+import React, { Component } from 'react';
 
-const checkout = (props) => {
-    
-return (
-    <div>
-        <h1>We hope it taste good</h1>
-        <div style={{width: '100%', margin: 'auto'}}>
-                <Burger ingredients={props.ingredients}/>
-            </div>
-            <Button 
-                btnType="Danger"
-                clicked={props.checkoutCancelled}>CANCEL</Button>
-            <Button 
-                btnType="Success"
-                clicked={props.checkoutContinued}>CONTINUE</Button>
-        </div>
-    );
+import Aux from '../../../hoc/Aux/Aux';
+import Button from '../../UI/Button/Button';
+
+class OrderSummary extends Component {
+    render () {
+        const ingredientSummary = Object.keys( this.props.ingredients )
+            .map( igKey => {
+                return (
+                    <li key={igKey}>
+                        <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {this.props.ingredients[igKey]}
+                    </li> );
+            } );
+
+        return (
+            <Aux>
+                <h3>Your Order</h3>
+                <p>A delicious burger with the following ingredients:</p>
+                <ul>
+                    {ingredientSummary}
+                </ul>
+                <p><strong>Total Price: {this.props.price.toFixed( 2 )}</strong></p>
+                <p>Continue to Checkout?</p>
+                <Button btnType="Danger" clicked={this.props.purchaseCancelled}>CANCEL</Button>
+                <Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
+            </Aux>
+        );
+    }
 }
 
-export default checkout;
+export default CheckoutSummary;
