@@ -88,7 +88,11 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
+<<<<<<< HEAD
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+=======
+    extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
     alias: {
       
       // Support React Native Web
@@ -114,7 +118,11 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
+<<<<<<< HEAD
         test: /\.(js|jsx)$/,
+=======
+        test: /\.(js|jsx|mjs)$/,
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
         enforce: 'pre',
         use: [
           {
@@ -145,7 +153,11 @@ module.exports = {
           },
           // Process JS with Babel.
           {
+<<<<<<< HEAD
             test: /\.(js|jsx)$/,
+=======
+            test: /\.(js|jsx|mjs)$/,
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
@@ -170,16 +182,32 @@ module.exports = {
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {
+<<<<<<< HEAD
                   fallback: require.resolve('style-loader'),
+=======
+                  fallback: {
+                    loader: require.resolve('style-loader'),
+                    options: {
+                      hmr: false,
+                    },
+                  },
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
                   use: [
                     {
                       loader: require.resolve('css-loader'),
                       options: {
                         importLoaders: 1,
+<<<<<<< HEAD
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
                         modules: true,
                         localIdentName: '[name]__[local]__[hash:base64:5]'
+=======
+                        modules:true,
+                  localIdentName: '[name]__[local]__[hash:base64:5]',
+                        minimize: true,
+                        sourceMap: shouldUseSourceMap,
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
                       },
                     },
                     {
@@ -211,7 +239,11 @@ module.exports = {
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
+<<<<<<< HEAD
           // This loader don't uses a "test" so it will catch all modules
+=======
+          // This loader doesn't use a "test" so it will catch all modules
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
           // that fall through the other loaders.
           {
             loader: require.resolve('file-loader'),
@@ -219,7 +251,11 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
+<<<<<<< HEAD
             exclude: [/\.js$/, /\.html$/, /\.json$/],
+=======
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
@@ -269,6 +305,12 @@ module.exports = {
         // https://github.com/mishoo/UglifyJS2/issues/2011
         comparisons: false,
       },
+<<<<<<< HEAD
+=======
+      mangle: {
+        safari10: true,
+      },
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
       output: {
         comments: false,
         // Turned on because emoji and regex is not minified properly using default

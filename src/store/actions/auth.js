@@ -48,12 +48,22 @@ export const auth = (email, password, isSignup) => {
             password: password,
             returnSecureToken: true
         };
+<<<<<<< HEAD
         let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY';
         if (!isSignup) {
             url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY';
         }
         axios.post(url, authData)
             .then(response => {
+=======
+        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyCdx6d_ndNcGInmM6kNswWnx8ALAK_vyv0';
+        if (!isSignup) {
+            url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyCdx6d_ndNcGInmM6kNswWnx8ALAK_vyv0';
+        }
+        axios.post(url, authData)
+            .then(response => {
+                console.log(response);
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('expirationDate', expirationDate);

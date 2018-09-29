@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 
 import classes from './Modal.css';
@@ -15,6 +16,26 @@ class Modal extends Component {
             <Aux>
                 <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
                 <div
+=======
+import React,{Component} from 'react';
+import classes from './Modal.css';
+import Aux from '../../../hoc/Aux';
+import Backdrop from '../BackDrop/BackDrop';
+
+
+class Modal extends Component {
+
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
+            
+    }
+    render() {
+        return(
+            <Aux>
+            <Backdrop show={this.props.show} 
+            clicked={this.props.modalclossed}/>
+        <div
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
                     className={classes.Modal}
                     style={{
                         transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
@@ -22,9 +43,17 @@ class Modal extends Component {
                     }}>
                     {this.props.children}
                 </div>
+<<<<<<< HEAD
             </Aux>
         )
     }
 }
 
+=======
+        </Aux>
+        )
+    }
+}
+   
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
 export default Modal;

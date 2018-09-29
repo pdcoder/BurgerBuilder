@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 
+=======
+import {withRouter} from 'react-router-dom';
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
@@ -25,4 +29,8 @@ const burger = ( props ) => {
     );
 };
 
+<<<<<<< HEAD
 export default burger;
+=======
+export default withRouter(burger);
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186

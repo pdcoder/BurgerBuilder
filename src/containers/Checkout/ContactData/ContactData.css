@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .ContactData {
     margin: 20px auto;
     width: 80%;
@@ -11,5 +12,21 @@
 @media (min-width: 600px) {
     .ContactData {
         width: 500px;
+=======
+.ContactData{
+    margin: 20px auto;
+    width:80%;
+    text-align: center
+}
+
+
+.Input{
+    display: block;
+}
+@media (min-width: 600px)
+{
+    .ContactData{
+        width:500px;
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
     }
 }

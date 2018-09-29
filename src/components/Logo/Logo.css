@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 .Logo {
     background-color: white;
     padding: 8px;
     height: 100%;
+=======
+.Logo{
+    background-color: #fff;
+    padding: 8px;
+    height:100%;
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
     box-sizing: border-box;
     border-radius: 5px;
 }
 
+<<<<<<< HEAD
 .Logo img {
+=======
+.Logo img{
+>>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
     height: 100%;
 }
