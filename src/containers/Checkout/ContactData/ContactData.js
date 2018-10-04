@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -12,20 +11,6 @@ import * as actions from '../../../store/actions/index';
 import { updateObject, checkValidity } from '../../../shared/utility';
 
 class ContactData extends Component {
-=======
-import React,{Component} from 'react';
-import Button from '../../../components/UI/Button/Button';
-import classes from './ContactData.css';
-import {connect} from 'react-redux';
-import Input from '../../../components/UI/Input/Input';
-import axios from 'axios';
-import Spinner from '../../../components/UI/Spinner/spinner';
-import withErrorHandler from '../../../hoc/witherrorHandler/withErrorHandler';
-import * as actions from '../../../store/actions/index';
-
-
-class ContactData extends Component{
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
     state = {
         orderForm: {
             name: {
@@ -111,20 +96,11 @@ class ContactData extends Component{
             }
         },
         formIsValid: false
-<<<<<<< HEAD
     }
 
     orderHandler = ( event ) => {
         event.preventDefault();
   
-=======
-        }
-
-
-    orderHandler = (event) =>{
-    event.preventDefault();
-//    this.setState( { loading: true } );
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
         const formData = {};
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
@@ -135,7 +111,6 @@ class ContactData extends Component{
             orderData: formData,
             userId: this.props.userId
         }
-<<<<<<< HEAD
 
         this.props.onOrderBurger(order, this.props.token);
         
@@ -151,56 +126,6 @@ class ContactData extends Component{
         const updatedOrderForm = updateObject(this.state.orderForm, {
             [inputIdentifier]: updatedFormElement
         });
-=======
-        
-        this.props.onOrderBurger(order, this.props.token);
-
-    }
-
-
-    checkValidity(value, rules) {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-        
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        return isValid;
-    }
-
-    inputChangedHandler = (event, inputIdentifier) => {
-        const updatedOrderForm = {
-            ...this.state.orderForm
-        };
-        const updatedFormElement = { 
-            ...updatedOrderForm[inputIdentifier]
-        };
-        updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-        updatedFormElement.touched = true;
-        updatedOrderForm[inputIdentifier] = updatedFormElement;
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
         
         let formIsValid = true;
         for (let inputIdentifier in updatedOrderForm) {
@@ -209,12 +134,7 @@ class ContactData extends Component{
         this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
     }
 
-<<<<<<< HEAD
     render () {
-=======
-
-    render(){
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
         const formElementsArray = [];
         for (let key in this.state.orderForm) {
             formElementsArray.push({
@@ -238,14 +158,7 @@ class ContactData extends Component{
                 <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
             </form>
         );
-<<<<<<< HEAD
         if ( this.props.loading ) {
-=======
-
-
-
-        if ( this.state.loading ) {
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
             form = <Spinner />;
         }
         return (
@@ -257,10 +170,6 @@ class ContactData extends Component{
     }
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
 const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,

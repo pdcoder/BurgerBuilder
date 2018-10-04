@@ -1,8 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 
-=======
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
 import classes from './BuildControl.css';
 
 const buildControl = (props) => (
@@ -18,8 +15,4 @@ const buildControl = (props) => (
     </div>
 );
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9d495daa1a0bedb7580a62196378715ed1a6d186
 export default buildControl;
